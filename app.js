@@ -3,9 +3,11 @@
 const express = require ('express');
 const bodyParser = require('body-parser');
 const routes = require('./routes/api');
-//const routes_web = require('./routes/web');
 
 const app = express();
+
+//Para servir estáticos
+app.use(express.static(__dirname));
 
 app.use(bodyParser.urlencoded({
     extended: false
@@ -18,7 +20,6 @@ app.use(bodyParser.json({
 }));
 
 app.use('', routes);
-//app.use('', routes_web);
 
 //Exportamos
 module.exports = app;
